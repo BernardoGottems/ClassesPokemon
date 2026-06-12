@@ -1,6 +1,6 @@
 package model;
 
-// 1. Tiramos o "abstract" daqui! Agora ela é uma classe normal.
+
 public class PokemonBase {
     private String nome;
     private int nivel;
@@ -9,7 +9,6 @@ public class PokemonBase {
     private int vidaAtual;
     private int ataque;
 
-    // 2. O construtor volta a pedir o TipoPokemon para saber quem é quem
     public PokemonBase(String nome, int nivel, TipoPokemon tipo, int hpBase, int ataqueBase) {
         this.nome = nome;
         this.nivel = nivel;
@@ -36,8 +35,4 @@ public class PokemonBase {
         }
     }
 
-    // 3. Como não temos mais as classes filhas, o ataque precisa ser genérico
-    public void atacar() {
-        System.out.println("💥 " + this.nome + " usou um golpe do tipo " + this.tipo + "!");
-    }
 }
