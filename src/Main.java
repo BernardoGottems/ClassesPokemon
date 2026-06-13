@@ -1,4 +1,5 @@
 import controller.*;
+import factory.GeradorDePokemons;
 import model.*;
 import view.*;
 
@@ -25,6 +26,13 @@ public class Main {
 
         PocaoController pc = new PocaoController();
         pc.AplicarPocao(superPocao, pikachu);
+
+        // Testando gerar pokemon da grama
+        PokemonBase inimigo = GeradorDePokemons.gerarPokemon(TipoPokemon.PLANTA, 5);
+
+        System.out.println("Um " + inimigo.getNome() + " selvagem apareceu!");
+        System.out.println("HP Max: " + inimigo.getVidaMaxima());
+        System.out.println("Ataque: " + inimigo.getAtaque());
 
 
     }
