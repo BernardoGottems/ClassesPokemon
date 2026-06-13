@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputHelper {
-    private Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
 
     public int lerInt(String texto){
         while (true) {
@@ -23,7 +23,7 @@ public class InputHelper {
 
 
 
-    public String lerTexto(){
+    public static String lerTexto(){
         return scanner.nextLine();
     }
 

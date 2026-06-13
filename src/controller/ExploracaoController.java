@@ -1,12 +1,17 @@
 package controller;
 import model.*;
 
+import view.JogadorView;
 import view.MapaView;
 import util.InputHelper;
 
 public class ExploracaoController {
     private Mapa mapa = new Mapa();
-    private Jogador jogador = new Jogador(0, 0);
+
+    private final JogadorModel jogador = new JogadorModel(0, 0);
+    private final JogadorController jogadorController = new JogadorController(jogador);
+    private final JogadorView jogadorView = new JogadorView(jogador,jogadorController);
+
     private MapaView mapaView = new MapaView();
     private InputHelper inputHelper = new InputHelper();
     private int opt;
@@ -75,17 +80,17 @@ public class ExploracaoController {
             if (optStr.equals("1")) {
                 System.out.println("Você escolheu Charmander!");
                 // Aqui está a mágica: em vez de return, você GUARDA no jogador!
-                jogador.adicionarPokemon(new PokemonBase("Charmander", 5, TipoPokemon.FOGO , 8, 5));
+                jogadorController.adicionarPokemon("Charmander", 5, TipoPokemon.FOGO , 8, 5);
                 escolhendo = false; // Quebra o loop
             }
             else if (optStr.equals("2")) {
                 System.out.println("Você escolheu Squirtle!");
-                jogador.adicionarPokemon(new PokemonBase("Squirtle", 5, TipoPokemon.AGUA, 5, 6));
+                jogadorController.adicionarPokemon("Squirtle", 5, TipoPokemon.AGUA, 5, 6);
                 escolhendo = false;
             }
             else if (optStr.equals("3")) {
                 System.out.println("Você escolheu Bulbassaur!");
-                jogador.adicionarPokemon(new PokemonBase("Bulbassaur", 5, TipoPokemon.PLANTA,  10, 5));
+                jogadorController.adicionarPokemon("Bulbassaur", 5, TipoPokemon.PLANTA,  10, 5);
                 escolhendo = false;
             }
             else {
