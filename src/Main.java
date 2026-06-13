@@ -10,7 +10,6 @@ public class Main {
         jogo.iniciarExploracao();
 
 
-
         // Criando o Pokémon (Membro 4)
         PokemonBase pikachu = new PokemonBase("Pikachu", 30, TipoPokemon.ELETRICO,100, 20); // Nome, HP Atual, HP Máximo
 
