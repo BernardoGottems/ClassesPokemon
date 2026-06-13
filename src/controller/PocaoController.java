@@ -1,15 +1,16 @@
 package controller;
 
 import model.Pocao;
+import model.PokemonBase;
 import view.PocaoView;
 
 public class PocaoController {
 
-    private Controller.ItemController itemController;
+    private controller.ItemController itemController;
     private PocaoView view;
 
     public PocaoController(){
-        this.itemController = new Controller.ItemController();
+        this.itemController = new controller.ItemController();
         this.view = new PocaoView();
 
     }
@@ -22,18 +23,11 @@ public class PocaoController {
 
         itemController.consumirItem(pocao);
 
-        int hpAtual = pokemon.getHp();
-        int hpMaximo = pokemon.getHpMaximo();
-
-        int novoHp = hpAtual + pocao.getPontosDeCura();
-
-        if(novoHp > hpMaximo){
-            novoHp = hpMaximo;
-        }
-
-        pokemon.setHp(novoHp);
+        // 👇 Toda aquela matemática gigante vira só uma linha!
+        pokemon.receberCura(pocao.getPontosDeCura());
 
         view.exibirUsoDePocao(pokemon.getNome(), pocao);
+
     }
 
 }

@@ -34,5 +34,13 @@ public class PokemonBase {
             this.vidaAtual = 0;
         }
     }
+    public void receberCura(int quantidadeCura) {
+        this.vidaAtual += quantidadeCura;
+
+        // Regra de segurança: O HP não pode passar do limite máximo
+        if (this.vidaAtual > this.vidaMaxima) {
+            this.vidaAtual = this.vidaMaxima;
+        }
+    }
 
 }
