@@ -6,13 +6,20 @@ import view.MenuView;
 public class MenuController {
     private final MenuModel model = new MenuModel();
     private final MenuView view = new MenuView();
+    private final ExploracaoController exploracaoController = new ExploracaoController();
 
-    public MenuController() throws InterruptedException {
+    public void iniciar() throws InterruptedException {
+        boolean rodando = true;
 
-        if(!model.rodando(view.mostrarMenu())){
-            System.out.println("Saindo");
-            System.exit(0);
+        while (rodando) {
+            int escolha = view.mostrarMenu();
+
+            if (model.rodando(escolha)) {
+                exploracaoController.iniciarExploracao();
+            } else {
+                System.out.println("Saindo...");
+                rodando = false;
+            }
         }
-
     }
 }

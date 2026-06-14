@@ -52,7 +52,7 @@ public class JogadorModel {
     public boolean removerPokemon(String nome){
         for(PokemonBase p : equipeJogador){
             if(p.getNome().equals(nome)){
-                equipeJogador.remove(nome);
+                equipeJogador.remove(p);
                 return true;
             }
         }

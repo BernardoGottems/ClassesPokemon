@@ -4,8 +4,6 @@ import model.JogadorModel;
 import model.PokemonBase;
 import model.TipoPokemon;
 
-import java.util.ArrayList;
-
 public class JogadorController {
     JogadorModel jogador;
 
@@ -13,12 +11,16 @@ public class JogadorController {
         this.jogador = jogador;
     }
 
-    public void adicionarPokemon(String nome, int nivel, TipoPokemon tipo, int hpBase, int ataqueBase){
-       jogador.adicionarPokemon(nome,nivel,tipo,hpBase,ataqueBase);
+    public void adicionarPokemon(String nome, int nivel, TipoPokemon tipo, int hpBase, int ataqueBase) {
+        jogador.adicionarPokemon(nome, nivel, tipo, hpBase, ataqueBase);
     }
-    public boolean removePokemon(String nome){
+
+    public boolean removePokemon(String nome) {
         return jogador.removerPokemon(nome);
     }
 
-
+    public PokemonBase getPokemonAtivo() {
+        if (jogador.getEquipeJogador().isEmpty()) return null;
+        return jogador.getEquipeJogador().get(0);
+    }
 }

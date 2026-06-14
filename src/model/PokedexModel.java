@@ -1,18 +1,16 @@
 package model;
-import model.PokemonBase;
 
 import java.util.ArrayList;
 
 public class PokedexModel {
-    ArrayList<String> monstrosVistos;
+    private ArrayList<String> monstrosVistos;
 
-
-    public PokedexModel(ArrayList<String> monstrosVistos) {
+    public PokedexModel() {
         this.monstrosVistos = new ArrayList<>();
     }
 
-    public void registrarEncontro(String nomeDoPokemon){
-        if(!this.monstrosVistos.contains(nomeDoPokemon)){
+    public void registrarEncontro(String nomeDoPokemon) {
+        if (!this.monstrosVistos.contains(nomeDoPokemon)) {
             this.monstrosVistos.add(nomeDoPokemon);
         }
     }

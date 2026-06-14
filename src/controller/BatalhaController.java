@@ -57,5 +57,6 @@ public class BatalhaController {
         defensor.receberDano(danoReal);
         System.out.println(defensor.getNome() + " perdeu " + danoReal + " de HP!");
         System.out.println("HP restante de " + defensor.getNome() + ": " + defensor.getVidaAtual() + " / " + defensor.getVidaMaxima());
+
     }
 }

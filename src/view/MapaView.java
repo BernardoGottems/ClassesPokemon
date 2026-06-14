@@ -1,49 +1,34 @@
 package view;
 
-import java.util.Scanner;
-
 public class MapaView {
-    Scanner scan = new Scanner(System.in);
-    public static final String RESET = "\u001B[0m";
+    public static final String RESET   = "\u001B[0m";
     public static final String VERMELHO = "\u001B[31m";
-    public static final String VERDE = "\u001B[32m";
+    public static final String VERDE   = "\u001B[32m";
     public static final String AMARELO = "\u001B[33m";
-    public static final String AZUL = "\u001B[34m";
-    public static final String ROXO = "\u001B[35m";
-    public static final String CIANO = "\u001B[36m";
+    public static final String AZUL    = "\u001B[34m";
+    public static final String ROXO    = "\u001B[35m";
 
-    public char Imprimir(char[][] mapa){
-        for(int i = 0; i< 10; i++){
-            for(int j = 0; j < 10; j++){
-                if(mapa[i][j] == 'H'){
-                    System.out.print(VERMELHO + mapa[i][j]);
 
-                }else if(mapa[i][j] == 'L'){
-                    System.out.print(AMARELO + mapa[i][j]);
-                }else if(mapa[i][j] == 'G'){
-                    System.out.print(ROXO + mapa[i][j]);
-                }else if(mapa[i][j] == '#'){
-                    System.out.print(VERDE + mapa[i][j]);
+    public void Imprimir(char[][] mapa, int jogX, int jogY) {
+        for (int i = 0; i < mapa.length; i++) {
+            for (int j = 0; j < mapa[i].length; j++) {
+
+                // Jogador sobrepõe o tile da posição atual
+                if (i == jogY && j == jogX) {
+                    System.out.print(AZUL + "J" + RESET);
+                    continue;
                 }
-                else {
-                    System.out.print(mapa[i][j]);
+
+                switch (mapa[i][j]) {
+                    case 'H': System.out.print(VERMELHO + " H " + RESET); break;
+                    case 'L': System.out.print(AMARELO  + " L " + RESET); break;
+                    case 'G': System.out.print(ROXO     + " G " + RESET); break;
+                    case '#': System.out.print(VERDE    + " # " + RESET); break;
+                    case '.':   System.out.print(" . "); break;
+                    default:  System.out.print(mapa[i][j]);              break;
                 }
             }
-            System.out.print("\n");
+            System.out.println();
         }
-        System.out.println("Escolha para que direção voce quer ir(W/A/S/D)");
-        String escolha;
-        do {
-            escolha = scan.nextLine().toUpperCase();
-            if(escolha.length() != 1){
-                System.out.println("coloque apenas um caractere");
-            }else if(escolha.equals("W") || escolha.equals("A") || escolha.equals("D") || escolha.equals("S")){
-                return escolha.charAt(0);
-
-            } else{
-                System.out.println("entrada invalida");
-            }
-        }while(true);
-
     }
 }

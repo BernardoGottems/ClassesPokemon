@@ -1,6 +1,5 @@
 package model;
 
-
 public class PokemonBase {
     private String nome;
     private int nivel;
@@ -13,34 +12,29 @@ public class PokemonBase {
         this.nome = nome;
         this.nivel = nivel;
         this.tipo = tipo;
-
-        // Matemática de status baseada no nível
         this.vidaMaxima = hpBase + (nivel * 10);
         this.vidaAtual = this.vidaMaxima;
         this.ataque = ataqueBase + (nivel * 2);
     }
 
-    // Getters para a Batalha e Views usarem
-    public String getNome() { return nome; }
-    public int getNivel() { return nivel; }
-    public TipoPokemon getTipo() { return tipo; }
-    public int getVidaAtual() { return vidaAtual; }
-    public int getVidaMaxima() { return vidaMaxima; }
-    public int getAtaque() { return ataque; }
+    public String getNome()        { return nome; }
+    public int getNivel()          { return nivel; }
+    public TipoPokemon getTipo()   { return tipo; }
+    public int getVidaAtual()      { return vidaAtual; }
+    public int getVidaMaxima()     { return vidaMaxima; }
+    public int getAtaque()         { return ataque; }
 
     public void receberDano(int dano) {
         this.vidaAtual -= dano;
-        if (this.vidaAtual < 0) {
-            this.vidaAtual = 0;
-        }
+        if (this.vidaAtual < 0) this.vidaAtual = 0;
     }
+
     public void receberCura(int quantidadeCura) {
         this.vidaAtual += quantidadeCura;
-
-        // Regra de segurança: O HP não pode passar do limite máximo
-        if (this.vidaAtual > this.vidaMaxima) {
-            this.vidaAtual = this.vidaMaxima;
-        }
+        if (this.vidaAtual > this.vidaMaxima) this.vidaAtual = this.vidaMaxima;
     }
 
+    public void curar() {
+        this.vidaAtual = this.vidaMaxima;
+    }
 }

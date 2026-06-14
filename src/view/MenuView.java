@@ -25,7 +25,7 @@ public class MenuView {
                 System.out.println("Iniciando o jogo...");
                 return 1;
             case 2:
-                System.out.println("Saindo...");
+
                 return 0;
             default:
                 System.out.println("Opção inválida.");
