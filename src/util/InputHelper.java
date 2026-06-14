@@ -5,9 +5,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputHelper {
-    static Scanner scanner = new Scanner(System.in);
+    public static Scanner scanner = new Scanner(System.in);
 
-    public int lerInt(String texto){
+    public static int lerInt(String texto){
         while (true) {
             try {
                 System.out.print(texto);
