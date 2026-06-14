@@ -15,7 +15,7 @@ public class JogadorView {
 
     public void status(){
         System.out.println("-=STATUS=-");
-        System.out.printf("Insignias do jogador: %s.\n",jogador.getNomeJogador());
+        System.out.println("Insignias do jogador.");
         for (String i: jogador.getInsignias()) {
             System.out.printf(">>%s.\n");
         }

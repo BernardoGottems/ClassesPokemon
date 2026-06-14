@@ -8,7 +8,7 @@ import util.InputHelper;
 public class ExploracaoController {
     private Mapa mapa = new Mapa();
 
-    private final JogadorModel jogador = new JogadorModel(0, 0);
+    private final JogadorModel jogador = new JogadorModel(0, 0,1.000);
     private final JogadorController jogadorController = new JogadorController(jogador);
     private final JogadorView jogadorView = new JogadorView(jogador,jogadorController);
 

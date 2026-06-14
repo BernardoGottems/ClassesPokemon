@@ -6,15 +6,16 @@ public class JogadorModel {
     private int x;
     private int y;
 
-    private String nomeJogador;
+
     private String[] insignias = new String[8];
-    private float dinheiro;
+    private double dinheiro;
 
     private ArrayList<PokemonBase> equipeJogador = new ArrayList<>();
 
-    public JogadorModel(int XInicial, int YInicial) {
+    public JogadorModel(int XInicial, int YInicial, double dinheiro) {
         this.x = XInicial;
         this.y = YInicial;
+        this.dinheiro = dinheiro;
     }
 
     //region getterSetters
@@ -23,19 +24,11 @@ public class JogadorModel {
     public void setX(int x) { this.x = x; }
     public void setY(int y) { this.y = y; }
 
-    public String getNomeJogador() {
-        return nomeJogador;
-    }
-
-    public void setNomeJogador(String nomeJogador) {
-        this.nomeJogador = nomeJogador;
-    }
-
-    public float getDinheiro() {
+    public double getDinheiro() {
         return dinheiro;
     }
 
-    public void setDinheiro(float dinheiro) {
+    public void setDinheiro(double dinheiro) {
         this.dinheiro = dinheiro;
     }
 
@@ -51,7 +44,7 @@ public class JogadorModel {
         return equipeJogador;
     }
 
-//endregion getterSetter
+    //endregion getterSetter
 
     public void adicionarPokemon(String nome, int nivel, TipoPokemon tipo, int hpBase, int ataqueBase){
         equipeJogador.add(new PokemonBase(nome,nivel,tipo,hpBase,ataqueBase));
@@ -65,6 +58,8 @@ public class JogadorModel {
         }
         return false;
     }
+
+
 }
 
 
