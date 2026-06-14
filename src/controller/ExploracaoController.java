@@ -9,7 +9,7 @@ public class ExploracaoController {
     private final BatalhaController batalhaController = new BatalhaController();
     private final JogadorModel jogador = new JogadorModel(4, 4, 1.000);
     private final JogadorController jogadorController = new JogadorController(jogador);
-    private final InputHelper inputHelper = new InputHelper();
+
 
     public void iniciarExploracao() {
         mapaController.inicializar();
@@ -26,7 +26,7 @@ public class ExploracaoController {
             mapaController.desenhar(jogX, jogY);
 
             System.out.print("Mova com W/A/S/D (ou X para sair): ");
-            String comando = inputHelper.lerTexto().toUpperCase();
+            String comando = InputHelper.lerTexto().toUpperCase();
 
             if (comando.equals("X")) {
                 System.out.println("Saindo da exploração...");
@@ -78,7 +78,7 @@ public class ExploracaoController {
             System.out.println("2 - Fugir");
             System.out.print("Sua escolha: ");
 
-            String opt = inputHelper.lerTexto();
+            String opt = InputHelper.lerTexto();
 
             if (opt.equals("2")) {
                 System.out.println("Você fugiu da batalha!");
@@ -108,7 +108,7 @@ public class ExploracaoController {
             System.out.println("3 - Bulbassaur (Planta)");
             System.out.print("Sua escolha: ");
 
-            String optStr = inputHelper.lerTexto();
+            String optStr = InputHelper.lerTexto();
 
             if (optStr.equals("1")) {
                 System.out.println("Você escolheu Charmander!");

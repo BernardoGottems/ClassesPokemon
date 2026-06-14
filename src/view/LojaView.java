@@ -28,7 +28,7 @@ public class LojaView {
             System.out.printf("-Nome: %s\n",item.getNome());
             System.out.println("==========================");
         }
-        int escolha = InputHelper.lerOpt("OPT:");
+        int escolha = InputHelper.lerInt("OPT:");
         boolean venda = false;
 
         escolha -= 1;

@@ -26,11 +26,6 @@ public class InputHelper {
     public static String lerTexto(){
         return scanner.nextLine();
     }
-    public static int lerOpt(String texto){
-        System.out.printf(texto);
-        return Integer.parseInt(scanner.nextLine());
-    }
-
 
     public static void lerMovimento(String texto){
         System.out.println(texto);
