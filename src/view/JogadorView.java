@@ -17,10 +17,10 @@ public class JogadorView {
         System.out.println("-=STATUS=-");
         System.out.println("Insignias do jogador.");
         for (String i: jogador.getInsignias()) {
-            System.out.printf(">>%s.\n");
+            System.out.print(">>%s.\n");
         }
         System.out.println("-=DINHEIRO=-");
-        System.out.printf("R$:%g.\n",jogador.getDinheiro());
+        System.out.print("R$:%g.\n" + jogador.getDinheiro());
     }
     public void removerPokemon(){
         System.out.print("Qual pokemon quer remover:");

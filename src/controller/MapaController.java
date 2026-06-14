@@ -43,4 +43,13 @@ public class MapaController {
         int[] lim = getLimites();
         return x >= 0 && x <= lim[0] && y >= 0 && y <= lim[1];
     }
+    public boolean temConstrucao(int x, int y) {
+        int[] lim = getLimites();
+        if (x < 0 || x > lim[0] || y < 0 || y > lim[1]) return false;
+        return map.isBlocked(x, y);
+    }
+
+    public char getTipoConstrucao(int x, int y) {
+        return map.getTileConstrucao(x, y);
+    }
 }

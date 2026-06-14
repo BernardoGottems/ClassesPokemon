@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class Treinador extends Pessoa {
+public class Treinador {
 
     private String nome;
     private String falaDesafio;

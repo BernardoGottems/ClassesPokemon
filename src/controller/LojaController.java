@@ -3,6 +3,7 @@ package controller;
 import model.ItemBase;
 import model.JogadorModel;
 import model.LojaModel;
+import model.Pocao;
 
 import java.util.ArrayList;
 
@@ -15,13 +16,10 @@ public class LojaController {
         this.loja = loja;
     }
 
-    public boolean lojaComprar(ArrayList<ItemBase> mochila, int index){
-        ArrayList<ItemBase> itemLoja = loja.getEstoque();
-            if(jogador.getDinheiro() >= (itemLoja.get(index).getPrecoBase() * itemLoja.get(index).getQuantidade())) {
-                jogador.setDinheiro(jogador.getDinheiro() - itemLoja.get(index).getPrecoBase() * itemLoja.get(index).getQuantidade());
-                mochila.add(new ItemBase(itemLoja.get(index).getNome(), itemLoja.get(index).getQuantidade(), itemLoja.get(index).getPrecoBase()));
-            return true;
-            }
-            return false;
-        }
+    public boolean lojaComprar(ArrayList<ItemBase> mochila, ItemBase item) {
+        if (jogador.getDinheiro() < item.getPrecoBase()) return false;
+        jogador.gastarDinheiro(item.getPrecoBase());
+        jogador.adicionarItem(new Pocao(item.getNome(), 1, item.getPrecoBase(), ((Pocao) item).getPontosDeCura()));
+        return true;
+    }
 }

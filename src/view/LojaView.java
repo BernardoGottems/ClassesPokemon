@@ -2,7 +2,9 @@ package view;
 
 import controller.LojaController;
 import model.ItemBase;
+import model.JogadorModel;
 import model.LojaModel;
+import model.Pocao;
 import util.InputHelper;
 
 import java.util.ArrayList;
@@ -10,35 +12,42 @@ import java.util.ArrayList;
 public class LojaView {
     LojaModel loja;
     LojaController lojaController;
+    JogadorModel jogador;
 
-    public LojaView(LojaModel loja, LojaController lojaController) {
+    public LojaView(JogadorModel jogador, LojaModel loja, LojaController lojaController) {
+        this.jogador = jogador;
         this.loja = loja;
         this.lojaController = lojaController;
     }
 
-    public void menuLoja(ArrayList<ItemBase> mochila){
-        System.out.println("-=Lojinha=-");
-        System.out.println(">>itens em estoque:");
-        int i = 0;
-        for(ItemBase item : loja.getEstoque()){
-            System.out.printf(">Item %d\n",i+1);
-            i++;
-            System.out.printf("-Quantidade: %d\n",item.getQuantidade());
-            System.out.printf("-Preço base: %g\n",item.getPrecoBase());
-            System.out.printf("-Nome: %s\n",item.getNome());
+    public void menuLoja(ArrayList<ItemBase> mochila) {
+        boolean naLoja = true;
+        while (naLoja) {
+            System.out.println("\n-=Lojinha=-");
+            System.out.printf("💰 Dinheiro: R$%.0f%n", jogador.getDinheiro());
+            System.out.println(">>Itens disponíveis:");
+            int i = 0;
+            for (ItemBase item : loja.getEstoque()) {
+                i++;
+                System.out.printf(">Item %d - %s | Cura: %d HP | Preço: R$%.0f%n",
+                        i, item.getNome(),
+                        ((Pocao) item).getPontosDeCura(),
+                        item.getPrecoBase());
+            }
+            System.out.println("0 - Sair");
             System.out.println("==========================");
-        }
-        int escolha = InputHelper.lerInt("OPT:");
-        boolean venda = false;
 
-        escolha -= 1;
-        if(escolha >= 0 && escolha < loja.getEstoque().size()){
-       venda = lojaController.lojaComprar(mochila, escolha);
-       }
-       if(venda){
-           System.out.println(">Compra realizada com sucesso!");
-       }else{
-           System.out.println(">Saldo insuficiente!");
-       }
+            int escolha = InputHelper.lerInt("OPT: ");
+
+            if (escolha == 0) {
+                System.out.println("Volte sempre!");
+                naLoja = false;
+            } else if (escolha >= 1 && escolha <= loja.getEstoque().size()) {
+                boolean venda = lojaController.lojaComprar(mochila, loja.getEstoque().get(escolha - 1));
+                System.out.println(venda ? ">Compra realizada!" : ">Saldo insuficiente!");
+            } else {
+                System.out.println("Opção inválida!");
+            }
+        }
     }
 }

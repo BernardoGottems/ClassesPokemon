@@ -4,6 +4,8 @@ import model.JogadorModel;
 import model.PokemonBase;
 import model.TipoPokemon;
 
+import java.awt.*;
+
 public class JogadorController {
     JogadorModel jogador;
 
@@ -23,4 +25,6 @@ public class JogadorController {
         if (jogador.getEquipeJogador().isEmpty()) return null;
         return jogador.getEquipeJogador().get(0);
     }
+
+
 }

@@ -27,7 +27,7 @@ public class MapaModel {
         return mapa[y][x] == '#';
     }
 
-    // ─── Geração ─────────────────────────────────────────────────────────────
+
 
     public void CriarMapa() {
         for (int i = 0; i < 10; i++) {
@@ -62,5 +62,10 @@ public class MapaModel {
             }
         }
 
+    }
+    public char getTileConstrucao(int x, int y) {
+        char c = mapa[y][x];
+        if (c == 'H' || c == 'G' || c == 'L') return c;
+        return '\0';
     }
 }

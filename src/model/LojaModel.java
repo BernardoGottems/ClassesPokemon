@@ -12,5 +12,9 @@ public class LojaModel {
     public void setEstoque(ArrayList<ItemBase> estoque) {
         this.estoque = estoque;
     }
+    public LojaModel() {
+        estoque.add(new Pocao("Poção", 1, 200, 20));
+        estoque.add(new Pocao("Super Poção", 1, 500, 50));
+    }
 
 }
