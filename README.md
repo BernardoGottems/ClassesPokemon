@@ -1,185 +1,176 @@
 # ClassesPokemon
 
-## Descrição do Projeto
+## Informações Gerais sobre o Projeto
 
-O **ClassesPokemon** é um jogo desenvolvido em Java inspirado na franquia Pokémon, utilizando conceitos de Programação Orientada a Objetos (POO) e o padrão arquitetural MVC (Model-View-Controller). O jogo é executado via terminal e permite que o jogador explore um mapa, capture Pokémon, participe de batalhas e interaja com diferentes locais presentes no mundo do jogo.
+ClassesPokemon é um jogo inspirado na franquia Pokémon desenvolvido em Java utilizando os conceitos de Programação Orientada a Objetos (POO) e a arquitetura MVC (Model-View-Controller). O projeto foi criado com fins acadêmicos para aplicar os conteúdos estudados durante a disciplina, incluindo encapsulamento, herança, polimorfismo, coleções, tratamento de exceções e persistência de dados.
 
-O projeto foi desenvolvido com o objetivo de aplicar os conhecimentos adquiridos na disciplina de Programação Orientada a Objetos, promovendo a utilização de classes, objetos, encapsulamento, herança, polimorfismo e relacionamentos entre classes.
+O jogador pode explorar um mapa, escolher um Pokémon inicial, enfrentar Pokémon selvagens, desafiar treinadores, visitar lojas, utilizar hospitais Pokémon e conquistar insígnias em ginásios.
 
----
-
-# Objetivos
+### Objetivos
 
 * Aplicar conceitos de Programação Orientada a Objetos.
-* Utilizar o padrão MVC para organizar a estrutura do sistema.
+* Utilizar a arquitetura MVC para organização do código.
 * Desenvolver um sistema modular e de fácil manutenção.
-* Simular mecânicas básicas presentes nos jogos da franquia Pokémon.
-* Exercitar a modelagem de classes e seus relacionamentos.
+* Simular mecânicas básicas presentes nos jogos Pokémon.
+* Implementar persistência de dados utilizando arquivos de texto.
 
 ---
 
 # Funcionalidades Principais
 
-* Menu principal para navegação do jogador.
-* Exploração de um mapa interativo.
+* Exploração de mapa.
 * Escolha de Pokémon inicial.
-* Captura e gerenciamento de Pokémon.
-* Sistema de batalhas.
-* Gerenciamento da equipe Pokémon.
-* Sistema de inventário (mochila).
-* Loja para compra de itens.
+* Sistema de batalhas contra Pokémon selvagens.
+* Sistema de batalhas contra treinadores.
 * Hospital para recuperação dos Pokémon.
-* Ginásios para desafios e progressão no jogo.
-* Controle de dinheiro e recursos do jogador.
+* Loja para compra e utilização de itens.
+* Sistema de ginásios e obtenção de insígnias.
+* Gerenciamento da equipe Pokémon.
+* Gerenciamento da mochila do jogador.
+* Sistema de salvamento e carregamento de dados em arquivo TXT.
 
 ---
 
 # Estrutura do Projeto
 
-O projeto segue o padrão arquitetural MVC (Model-View-Controller), dividindo as responsabilidades em três camadas.
+O projeto segue a arquitetura MVC.
 
 ## Model
 
-Responsável pelo armazenamento dos dados e pelas regras de negócio.
+Responsável pelos dados e regras de negócio.
 
 ### Principais Classes
 
-### JogadorModel
+#### JogadorModel
 
-Representa o jogador e armazena informações como:
+Armazena informações do jogador:
 
 * Dinheiro
-* Equipe Pokémon
 * Mochila
 * Insígnias
 * Posição no mapa
+* Equipe Pokémon
 
-### PokemonBase
+#### PokemonBase
 
-Representa um Pokémon contendo atributos e comportamentos relacionados ao personagem.
+Representa um Pokémon com seus atributos e comportamentos.
 
-Exemplos:
+#### MapaModel
 
-* Nome
-* Tipo
-* Vida
-* Nível
-* Ataques
+Responsável pela criação e gerenciamento do mapa.
 
-### MapaModel
+#### LojaModel
 
-Responsável pela criação e gerenciamento do mapa do jogo.
+Gerencia os itens disponíveis para compra.
 
-### LojaModel
+#### Treinador
 
-Controla os itens disponíveis para compra.
+Representa os treinadores adversários.
 
-### Batalha
+#### Batalha
 
-Implementa a lógica das batalhas entre Pokémon.
-
-### Treinador
-
-Representa treinadores adversários encontrados durante a exploração.
+Contém a lógica das batalhas.
 
 ---
 
 ## View
 
-Responsável pela interação com o usuário através do terminal.
+Responsável pela interação com o usuário.
 
 ### Principais Classes
 
 * MenuView
 * MapaView
-* PokemonView
 * LojaView
 * BatalhaView
 
-Essas classes exibem informações e recebem as entradas do usuário.
+As Views exibem informações e recebem as entradas do usuário.
 
 ---
 
 ## Controller
 
-Responsável por controlar o fluxo da aplicação e conectar as Views aos Models.
+Responsável pelo controle do fluxo da aplicação.
 
 ### Principais Classes
 
-### MenuController
+#### MenuController
 
-Controla o menu principal e o início do jogo.
+Controla o menu principal.
 
-### ExploracaoController
+#### ExploracaoController
 
-Gerencia a exploração do mapa e coordena os demais controladores.
+Coordena a exploração do mapa e as interações do jogador.
 
-### MapaController
+#### MapaController
 
-Controla movimentação e interações com o mapa.
+Controla movimentação e interação com o mapa.
 
-### JogadorController
+#### JogadorController
 
-Gerencia ações relacionadas ao jogador.
+Gerencia as ações relacionadas ao jogador.
 
-### BatalhaController
+#### BatalhaController
 
 Controla o sistema de batalhas.
 
+#### LojaController
+
+Controla as compras e utilização de itens.
+
 ---
 
-# Relacionamentos entre Classes
+# Relações entre as Classes
 
 ## Associação
 
-Ocorre quando duas classes interagem entre si sem dependência de existência.
+As classes colaboram entre si para executar funcionalidades do sistema.
 
 Exemplos:
 
-* Batalha ↔ PokemonBase
-* ExploracaoController ↔ MapaController
 * ExploracaoController ↔ JogadorController
+* ExploracaoController ↔ MapaController
+* Batalha ↔ PokemonBase
 
 ---
 
 ## Agregação
 
-Ocorre quando uma classe contém outra, mas os objetos podem existir independentemente.
+O JogadorModel agrega objetos que podem existir independentemente dele.
 
-Exemplo:
+Exemplos:
 
-* JogadorModel agrega diversos objetos PokemonBase em sua equipe.
-
-Mesmo que o jogador deixe de existir, os Pokémon continuam sendo entidades independentes.
+* Equipe Pokémon
+* Itens da mochila
 
 ---
 
 ## Composição
 
-Ocorre quando uma classe é responsável pelo ciclo de vida de seus componentes.
+O MapaModel é composto por sua estrutura interna de posições e elementos do mapa.
 
-Exemplo:
-
-* MapaModel é composto pela estrutura interna do mapa (matriz de posições).
-
-Caso o mapa seja destruído, seus elementos internos também deixam de existir.
+Caso o mapa deixe de existir, seus componentes internos também deixam de existir.
 
 ---
 
-# Fluxo Geral da Aplicação
+# Persistência de Dados
 
-1. O usuário inicia a aplicação através da classe Main.
-2. O MenuController exibe o menu principal.
-3. Após iniciar o jogo, o ExploracaoController assume o controle da exploração.
-4. O jogador pode se movimentar pelo mapa.
-5. Dependendo da posição, o jogador pode:
+O projeto implementa persistência de dados utilizando arquivos de texto (.txt).
 
-    * Encontrar Pokémon;
-    * Iniciar batalhas;
-    * Entrar em lojas;
-    * Utilizar o hospital;
-    * Desafiar ginásios.
-6. As ações atualizam os Models e as informações são exibidas pelas Views.
+Ao encerrar o jogo, informações importantes do jogador são armazenadas em arquivo para que possam ser recuperadas posteriormente.
+
+Atualmente são persistidos os seguintes dados:
+
+* Dinheiro do jogador;
+* Insígnias conquistadas.
+
+O carregamento das informações é realizado automaticamente quando o jogo é iniciado, permitindo a continuidade do progresso entre diferentes execuções da aplicação.
+
+---
+
+# Tratamento de Exceções
+
+O sistema utiliza tratamento de exceções durante operações de leitura e gravação de arquivos, garantindo maior robustez e evitando falhas inesperadas durante o processo de salvamento e carregamento dos dados.
 
 ---
 
@@ -190,51 +181,35 @@ Caso o mapa seja destruído, seus elementos internos também deixam de existir.
 * Java JDK 17 ou superior.
 * IDE compatível com Java (IntelliJ IDEA, Eclipse ou NetBeans).
 
-## Passos para Execução
+## Passos
 
-### 1. Obter o Projeto
-
-Clone o repositório ou extraia os arquivos do projeto.
-
-### 2. Abrir na IDE
-
-Abra a pasta do projeto utilizando sua IDE de preferência.
-
-### 3. Localizar a Classe Principal
-
-Localize o arquivo:
-
-Main.java
-
-### 4. Executar
-
-Execute a classe Main.
-
-### 5. Jogar
-
-O menu principal será exibido no terminal e o jogo poderá ser iniciado.
+1. Baixe ou clone o projeto.
+2. Abra o projeto em sua IDE.
+3. Localize a classe `Main`.
+4. Execute a aplicação.
+5. Utilize o menu para iniciar o jogo.
 
 ---
 
 # Uso de Inteligência Artificial
 
-Durante o desenvolvimento do projeto foram utilizadas ferramentas de Inteligência Artificial como apoio ao aprendizado e à implementação.
+Durante o desenvolvimento do projeto foram utilizadas ferramentas de Inteligência Artificial como apoio ao aprendizado e desenvolvimento.
 
 As ferramentas utilizadas foram:
 
 * ChatGPT (OpenAI)
 * Gemini (Google)
 
-As IAs auxiliaram em atividades como:
+As IAs auxiliaram em:
 
 * Esclarecimento de conceitos de Programação Orientada a Objetos;
-* Explicação do padrão MVC;
-* Sugestões para organização do código;
-* Correção e revisão de trechos de código;
-* Identificação de erros;
-* Apoio na elaboração da documentação.
+* Explicação sobre MVC;
+* Correção e revisão de código;
+* Sugestões de implementação;
+* Auxílio na documentação do projeto;
+* Apoio na identificação e correção de erros.
 
-As ferramentas foram utilizadas apenas como suporte ao desenvolvimento. A modelagem, implementação, adaptação e validação das soluções foram realizadas pelos integrantes do grupo.
+As decisões de implementação, adaptação e validação das soluções foram realizadas pelos integrantes do grupo.
 
 ---
 
@@ -243,6 +218,7 @@ As ferramentas foram utilizadas apenas como suporte ao desenvolvimento. A modela
 * Java
 * Programação Orientada a Objetos (POO)
 * MVC (Model-View-Controller)
+* Manipulação de Arquivos TXT
 
 ---
 
@@ -276,4 +252,4 @@ https://docs.oracle.com/en/java/
 
 # Licença
 
-Projeto desenvolvido para fins acadêmicos e educacionais.
+Projeto desenvolvido exclusivamente para fins acadêmicos e educacionais.
