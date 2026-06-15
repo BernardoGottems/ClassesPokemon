@@ -3,6 +3,7 @@ package controller;
 import factory.GeradorDePokemons;
 import model.*;
 import util.InputHelper;
+import util.SaveManager;
 import view.LojaView;
 
 public class ExploracaoController {
@@ -32,8 +33,12 @@ public class ExploracaoController {
 
     public void iniciarExploracao() {
         mapaController.inicializar();
+        SaveManager.carregar(jogador);
         System.out.println("Bem-vindo ao mundo Pokémon!");
-        escolherStarter();
+        if(jogadorController.getPokemonAtivo() == null){
+            escolherStarter();
+        }
+
 
         boolean rodando = true;
         while (rodando) {
@@ -46,6 +51,7 @@ public class ExploracaoController {
 
             if (comando.equals("X")) {
                 System.out.println("Saindo...");
+                SaveManager.salvar(jogador);
                 rodando = false;
                 continue;
             }
