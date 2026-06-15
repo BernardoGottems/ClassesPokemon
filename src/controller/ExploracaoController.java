@@ -19,6 +19,9 @@ public class ExploracaoController {
     private final LojaController lojaController = new LojaController(jogador, lojaModel);
     private final LojaView lojaView = new LojaView(jogador, lojaModel, lojaController);
 
+    private final PokedexModel pokedexModel = new PokedexModel();         // NOVO
+    private final PokedexController pokedexController = new PokedexController(); // NOVO
+
     private boolean ginasioVencido = false;
 
     public ExploracaoController() {
@@ -39,20 +42,24 @@ public class ExploracaoController {
             escolherStarter();
         }
 
-
         boolean rodando = true;
         while (rodando) {
             int jogX = jogador.getX();
             int jogY = jogador.getY();
             mapaController.desenhar(jogX, jogY);
 
-            System.out.print("Mova com W/A/S/D (ou X para sair): ");
+            System.out.print("Mova com W/A/S/D | P - Pokédex | X - Sair: "); // NOVO texto
             String comando = InputHelper.lerTexto().toUpperCase();
 
             if (comando.equals("X")) {
                 System.out.println("Saindo...");
                 SaveManager.salvar(jogador);
                 rodando = false;
+                continue;
+            }
+
+            if (comando.equals("P")) {                                          // NOVO
+                pokedexController.exibirPokedex(pokedexModel.getMonstrosVistos());
                 continue;
             }
 
@@ -91,7 +98,6 @@ public class ExploracaoController {
         System.out.println("\n🏥 ===== HOSPITAL POKÉMON ===== 🏥");
         System.out.println("Enfermeira Joy: Olá! Deixa eu curar seus Pokémon!");
         PokemonBase meuPokemon = jogadorController.getPokemonAtivo();
-
         meuPokemon.curar();
         System.out.println("✅ " + meuPokemon.getNome() + " foi totalmente curado!");
         System.out.println("Enfermeira Joy: Seus Pokémon estão prontos para batalhar!");
@@ -123,7 +129,9 @@ public class ExploracaoController {
                 "Você não tem chance contra mim!",
                 "Impossível... Fui derrotado por um iniciante!"
         );
-        lider.adicionarPokemon(GeradorDePokemons.gerarPokemon(TipoPokemon.TERRA, 10));
+        PokemonBase pokemonLider = GeradorDePokemons.gerarPokemon(TipoPokemon.TERRA, 10);
+        lider.adicionarPokemon(pokemonLider);
+        pokedexModel.registrarEncontro(pokemonLider.getNome());              // NOVO
 
         boolean venceu = treinadorController.iniciarDesafio(
                 lider, meuPokemon, jogador.getPocoes(), pocaoController);
@@ -149,6 +157,7 @@ public class ExploracaoController {
                     (int)(Math.random() * 5) + 3
             );
             System.out.println("É um " + selvagem.getNome() + "! (Nível " + selvagem.getNivel() + ")");
+            pokedexModel.registrarEncontro(selvagem.getNome());              // NOVO
 
             PokemonBase meuPokemon = jogadorController.getPokemonAtivo();
             if (meuPokemon == null) { System.out.println("O inimigo foi embora..."); return; }
@@ -177,5 +186,6 @@ public class ExploracaoController {
                 default: System.out.println("Opção inválida!");
             }
         }
+        pokedexModel.registrarEncontro(jogadorController.getPokemonAtivo().getNome());
     }
 }

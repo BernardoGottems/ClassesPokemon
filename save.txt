@@ -1,0 +1,2 @@
+Dinheiro=1000.0
+Insignias=
