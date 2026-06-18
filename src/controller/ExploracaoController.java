@@ -131,7 +131,7 @@ public class ExploracaoController {
         );
         PokemonBase pokemonLider = GeradorDePokemons.gerarPokemon(TipoPokemon.TERRA, 10);
         lider.adicionarPokemon(pokemonLider);
-        pokedexModel.registrarEncontro(pokemonLider.getNome());              // NOVO
+        pokedexModel.registrarEncontro(pokemonLider.getNome());
 
         boolean venceu = treinadorController.iniciarDesafio(
                 lider, meuPokemon, jogador.getPocoes(), pocaoController);

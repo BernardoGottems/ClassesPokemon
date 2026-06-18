@@ -23,7 +23,7 @@ public class PocaoController {
 
         itemController.consumirItem(pocao);
 
-        // 👇 Toda aquela matemática gigante vira só uma linha!
+
         pokemon.receberCura(pocao.getPontosDeCura());
 
         view.exibirUsoDePocao(pokemon.getNome(), pocao);
