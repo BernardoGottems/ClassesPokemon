@@ -32,7 +32,6 @@ public class JogadorModel {
     public void setDinheiro(double dinheiro) { this.dinheiro = dinheiro; }
 
     public String[] getInsignias() { return insignias; }
-    public void setInsignias(String[] insignias) { this.insignias = insignias; }
 
     public ArrayList<PokemonBase> getEquipeJogador() { return equipeJogador; }
     public ArrayList<ItemBase> getMochila() { return mochila; }
@@ -65,18 +64,7 @@ public class JogadorModel {
     }
 
 
-    public boolean consumirItem(String nome, int quantidade) {
-        for (ItemBase i : mochila) {
-            if (i.getNome().equals(nome) && i.getQuantidade() >= quantidade) {
-                i.setQuantidade(i.getQuantidade() - quantidade);
-                if (i.getQuantidade() == 0) {
-                    mochila.remove(i);
-                }
-                return true;
-            }
-        }
-        return false;
-    }
+
     public boolean gastarDinheiro(double valor) {
         if (dinheiro < valor) return false;
         dinheiro -= valor;

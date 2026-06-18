@@ -1,6 +1,6 @@
 package model;
 
-public class PokemonBase {
+public class PokemonBase implements Treinavel {
     private String nome;
     private int nivel;
     private TipoPokemon tipo;
@@ -36,5 +36,13 @@ public class PokemonBase {
 
     public void curar() {
         this.vidaAtual = this.vidaMaxima;
+    }
+
+    @Override
+    public void treinar() {
+        this.nivel++;
+        this.vidaMaxima += 10;
+        this.ataque += 2;
+        this.vidaAtual += 10;
     }
 }

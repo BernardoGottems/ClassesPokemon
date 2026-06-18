@@ -60,6 +60,7 @@ public class BatalhaView {
 
     public void exibirVitoria(String nomeInimigo) {
         System.out.println("\n " + nomeInimigo + " desmaiou! Você venceu a batalha!");
+        System.out.println(" Seu Pokemon subiu de nível!!");
     }
 
     public void exibirDerrota(String nomePokemon) {

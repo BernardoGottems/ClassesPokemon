@@ -1,9 +1,6 @@
 package controller;
 
-import model.Batalha;
-import model.PokemonBase;
-import model.TipoPokemon;
-import model.Pocao;
+import model.*;
 import view.BatalhaView;
 import util.InputHelper;
 import java.util.List;
@@ -82,6 +79,7 @@ public class BatalhaController {
         PokemonBase meuPokemon = batalha.getPokemonJogador();
         PokemonBase inimigo = batalha.getPokemonInimigo();
 
+
         if (acaoEscolhida == 1) {
             view.exibirTurnoJogador();
             calcularDano(meuPokemon, inimigo, true);
@@ -110,6 +108,7 @@ public class BatalhaController {
 
         if (batalha.inimigoDerrotado()) {
             view.exibirVitoria(inimigo.getNome());
+            meuPokemon.treinar();
             batalha.encerrar();
             return;
         }

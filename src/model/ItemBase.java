@@ -1,6 +1,6 @@
 package model;
 
-public class ItemBase {
+public abstract class ItemBase {
 
     protected String nome;
     protected int quantidade;
